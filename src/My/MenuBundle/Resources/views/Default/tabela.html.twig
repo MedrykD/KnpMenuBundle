@@ -1,0 +1,19 @@
+<table>
+<tr>
+{# sorting of properties based on query components #}
+    <th>{{ pagination.sortable('Id', 'a.id')|raw }}</th>
+    <th>{{ pagination.sortable('Title', 'a.title')|raw }}</th>
+</tr>
+
+{# table body #}
+{% for article in pagination %}
+<tr {% if loop.index is odd %}class="color"{% endif %}>
+    <td>{{ article.id }}</td>
+    <td>{{ article.title }}</td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ pagination.render()|raw }}
+</div>
